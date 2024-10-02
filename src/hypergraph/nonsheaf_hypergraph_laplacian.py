@@ -30,7 +30,7 @@ def connected_components(hypergraph):
 
 
 #Put the File Path for the XML Dataset you want here. It should be the Posts.xml file of the Stack Exchange Dataset
-df = pd.read_xml('/Users/irajmoradi/Downloads/bio_data/Posts.xml', xpath='.//row', parser='etree')
+df = pd.read_xml('Posts.xml', xpath='.//row', parser='etree')
 
 parent_tags = df.set_index('Id')['Tags'].to_dict()
 
