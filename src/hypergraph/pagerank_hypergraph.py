@@ -26,7 +26,8 @@ def connected_components(hypergraph):
     import networkx as nx
     G = hnx.Hypergraph.to_incidence_graph(hypergraph)
     return nx.connected_components(G)
-# Load the data
+
+# Load the data, it should be the posts.xml file of a stack exchange dataset
 
 df = pd.read_xml('tempdata', xpath='.//row', parser='etree')
 
@@ -157,7 +158,7 @@ df['Rank'] = df['PageRankValue'].rank(ascending=False, method='min').astype(int)
 # Sorting the DataFrame by Rank
 df = df.sort_values(by='Rank')
 
-# Exporting to CSV
+# Exporting to CSV, set filename to desired output
 df.to_csv('pagerank_output.csv', index=False)
 
 print("CSV file has been created successfully.")

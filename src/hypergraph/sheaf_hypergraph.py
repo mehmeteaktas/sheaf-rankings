@@ -12,7 +12,7 @@ from scipy.linalg import issymmetric
 import time
 
 
-# Load the data
+# Load the data, should be the posts.xml file of a stack exchange dataset
 df = pd.read_xml('tempdata', xpath='.//row', parser='etree')
 
 parent_tags = df.set_index('Id')['Tags'].to_dict()

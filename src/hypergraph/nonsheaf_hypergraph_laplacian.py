@@ -43,12 +43,9 @@ def inherit_tags(row):
         return parent_tags[row['ParentId']]
     return row['Tags']
 
-# Apply the function to the dataframe
 df['Tags'] = df.apply(inherit_tags, axis=1)
 
-# Replace NaN with None
 df = df.where(pd.notnull(df), None)
-# Process the Tags column
 df["Tags"] = df["Tags"].map(lambda x: x.strip('|').split('|') if x else [])
 #Older datasets have different structures, thus this line is commented out for that reason
 #df["Tags"] = df["Tags"].map(lambda x: x.strip('<>').split('><') if x else [])
@@ -87,12 +84,7 @@ for user in df4_relevant["OwnerUserId"].unique():
     userdict[user] = tagdict
 
 num_keys = len(userdict)
-print("num_users = ", num_users)
-print("num_tags = ", num_tags)
-print(num_keys)
 
-print(df_relevant)
-print(df7_first_100)
 
 new_df = pd.DataFrame(columns=['UserID', 'Tag', 'InfectiveScore'])
 
@@ -160,7 +152,7 @@ df = pd.DataFrame(data, columns=['UserID', 'Tag', 'Centrality'])
 df_sorted = df.sort_values(by=['Tag', 'Centrality'], ascending=[True, False])
 
 
-#Change file name is whatever you want
+#Change file name to desired output
 df_sorted.to_csv('Non_sheaf_Hypergraph_laplacian_human_biology.csv', index=False)
 print("DataFrame created and exported successfully!")
 

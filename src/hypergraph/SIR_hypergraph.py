@@ -145,12 +145,8 @@ for tag in unique_tags_list:
     average_weight = total_weight/counter
 
     average_degree = average_vertex_degree(graph)*(average_edge_size(graph) - 1)*average_weight
-    print("average degree", average_degree)
-    print("tag", tag)
+
     infection_rate = (average_degree)/((average_degree)**2 - (average_degree))
-    
-    print("infection_rate", infection_rate)
-  
     infection_probability = infection_rate
     # Initialize states
     num_steps = 50
@@ -170,13 +166,11 @@ for tag in unique_tags_list:
             susceptible_traj = [len([v for v in states.values() if v == 'S'])]
             infected_traj = [len([v for v in states.values() if v == 'I'])]
             recovered_traj = [len([v for v in states.values() if v == 'R'])]
-            #print("vertices", vertices)
 
             # Simulation function
             def simulate_step():
                 new_states = states.copy()
                 for e in graph.edges:
-                #  print([v for v in e])
                     infected = [v for v in e if states.get(v, "S") == 'I']
                     int_list = []
                     for v in e:
@@ -184,8 +178,6 @@ for tag in unique_tags_list:
                     meann = np.mean(int_list)
                     local_infection_probability = infection_probability
                     local_infection_probability = (1 - (1- infection_probability)**meann)
-                    #print(local_infection_probability, "Local infection probability")
-                    #print("Local Infection", local_infection_probability)
                     if infected:
                         for v in e:
                             if states.get(v, "S") == 'S' and random.random() < 1 - (1 - local_infection_probability)**len(infected):
@@ -206,7 +198,6 @@ for tag in unique_tags_list:
 
             runninglist.append(recovered_traj[-1] + infected_traj[-1])
         elapsed_time = end_time - start_time
-            #print(recovered_traj[-1] + infected_traj[-1])
         print(f"Elapsed time: {elapsed_time} seconds")
         print(np.mean(runninglist))
         new_df.loc[len(new_df)] = [z, tag, np.mean(runninglist)]
