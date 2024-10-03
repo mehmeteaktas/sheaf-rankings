@@ -211,12 +211,6 @@ for tag in unique_tags_list:
         print(np.mean(runninglist))
         new_df.loc[len(new_df)] = [z, tag, np.mean(runninglist)]
 
-        # Plot the trajectories
-
-
-    # Print the computed mutual information
-    #mutual_info = compute_mutual_information(susceptible_traj, infected_traj)
-    #print(f'Mutual Information between Susceptible and Infected: {mutual_info}')
-
+ 
 
 new_df.to_csv('Hypergraph_Biology_SIR.csv', index=False)
