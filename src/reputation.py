@@ -257,7 +257,7 @@ df_outer_dict = df_outer_dict.sort_values(by=['Tag', 'Score'], ascending=[True, 
 df_outer_dict = df_outer_dict.dropna(subset=['UserId'])
 
 # Save to CSV
-csv_path = 'reputation_600.csv'
+csv_path = 'reputation.csv'
 df_outer_dict.to_csv(csv_path, index=False)
 
 
