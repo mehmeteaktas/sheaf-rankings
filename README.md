@@ -1,8 +1,11 @@
-# Expert_Detection
-This is the source code for the paper **Expert Detection on Crowdsourcing Forums via Sheaf Laplacian**.
+# Expert Detection
+This repository contains the source code for the paper **Expert Detection on Crowdsourcing Forums via Sheaf Laplacian**.
 
 ## Scripts
-Within the src file of the repo is the various python scripts used in order to produce the rankings utilized in the paper. All the python files need to be edited to include paths to the Stack Exchange datasets you wish to use, what output names you want for each file, along with altering which Tag you wish to get rankings for. The sheaf graph and hypergraph python files take up a lot of memory due to how the eigenvalues are computed, meaning that doing it on larger stack-exchange datasets may not be feasible. The Stack Exchange Datasets are avaliable for download here https://archive.org/download/stackexchange.
+Inside the `src` directory, you'll find the Python scripts used to generate the rankings referenced in the paper. To run these scripts, you'll need to adjust the paths to the Stack Exchange datasets you want to analyze, specify the desired output file names, and set the target tags for ranking generation. Note that the sheaf graph and hypergraph scripts can be memory-intensive due to the eigenvalue computations, which may limit their feasibility on larger Stack Exchange datasets. You can download the datasets from [Stack Exchange on Archive.org](https://archive.org/download/stackexchange).
+
+### Hypergraph vs Graph
+The hypergraph scripts require manual adjustments for each tag, whereas the graph scripts are tailored to individual Stack Exchange communities and their respective tags.
 
 ## Results
-The results for the experiments mentioned in the paper are included in the results/Results folder, with each experiments results being in a logical folder and filename.
+The experimental results referenced in the paper are located in the `results/Results` folder, with each experiment’s output stored in logically named folders and files for easy navigation.
